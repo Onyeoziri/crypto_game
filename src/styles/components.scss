@@ -1,0 +1,75 @@
+//Buttons
+button {
+  min-width: fit-content;
+  padding: 0.4rem 1.4rem;
+  border-radius: 2rem;
+  background: transparent;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.btn-login {
+  display: inline-block;
+  background-color: rgb(211, 150, 53);
+  height: 5rem;
+  width: 16rem;
+  border-radius: 1.5rem;
+
+  font-size: 1.2rem;
+
+  &:hover {
+    background-color: rgb(219, 141, 16);
+  }
+}
+
+.btn-nav-login {
+  border-radius: 1rem;
+  background-color: rgb(241, 180, 26);
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(245, 168, 74);
+  }
+}
+
+.btn-x {
+  height: 3rem;
+  font-size: 1.3rem;
+  margin-top: 1vh;
+  margin-left: 1vw;
+
+  position: relative;
+  left: 45%;
+  top: -5%;
+
+  &:hover {
+    font-size: 1.6rem;
+  }
+}
+
+.g-reset {
+  margin-top: 1.6rem;
+  border-radius: 0.55rem;
+  background-color: rgb(255, 139, 44);
+  padding: 0.45rem 1.6rem;
+
+  font-size: 1.2rem;
+
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(251, 158, 44);
+    box-shadow: 0.1rem 0.1rem 0.5rem 0.1rem #888;
+  }
+
+  &:active {
+    font-size: 1rem;
+  }
+}
+
+.game-info {
+  & li {
+    list-style: none;
+  }
+}

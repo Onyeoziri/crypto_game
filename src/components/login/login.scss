@@ -1,0 +1,59 @@
+.overlay {
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(56, 53, 53, 0.345);
+
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+}
+.m-container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 2rem;
+  background-color: rgb(243, 240, 230);
+  height: 52vh;
+  width: 35rem;
+  border-radius: 1.7rem;
+  border-color: #beb7a3;
+  align-items: center;
+  align-content: center;
+
+  box-shadow: rgba(119, 116, 116, 0.19) 0px 10px 20px,
+    rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
+  text-align: center;
+
+  h1 {
+    font-size: 2.5rem;
+    color: hsl(0, 43%, 27%);
+    margin-top: 8rem;
+    padding-bottom: 0rem;
+  }
+
+  img {
+    width: 8rem;
+    padding-bottom: 1rem;
+  }
+  p {
+    padding: 0.5rem 0;
+    padding-bottom: 1rem;
+  }
+
+  .m-content {
+    margin-top: -8vh;
+  }
+  .img-fox2 {
+    margin-top: 1.2rem;
+    width: 20rem;
+  }
+
+  h2,
+  h3 {
+    color: hsl(0, 43%, 27%);
+  }
+}

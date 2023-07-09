@@ -1,0 +1,40 @@
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  height: 3.3rem;
+  border-radius: 2rem;
+  background-color: rgb(46, 46, 49);
+  margin-bottom: 2rem;
+
+  a {
+    color: white;
+
+    &:not(:first-child) {
+      margin: 0 1.2rem;
+    }
+
+    &.active,
+    &:not(:first-child):hover {
+      color: rgb(249, 104, 82);
+    }
+  }
+}
+
+.a-panel {
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: rgb(46, 46, 49);
+  width: fit-content;
+  padding: 0 5%;
+  height: 3rem;
+
+  border-radius: 2rem;
+  top: -2vh;
+  left: 4%;
+
+  color: white;
+  font-size: 0.8rem;
+}

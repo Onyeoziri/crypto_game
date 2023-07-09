@@ -34,7 +34,7 @@ export default function TicTacToe() {
         console.log("You've Won");
         if (value1 && value2 && value3 === "x") {
           setWins((prevState) => prevState + 0.5);
-        } else if (value1 === "o") {
+        } else if (value1 && value2 && value3 === "o") {
           setLosses((prevState) => prevState + 0.5);
         }
         setGameOver(true);

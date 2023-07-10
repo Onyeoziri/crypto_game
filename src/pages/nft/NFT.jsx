@@ -1,3 +1,5 @@
+import { useAtom } from "jotai";
+
 export default function NFT() {
   return (
     <div>

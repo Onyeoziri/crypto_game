@@ -1,15 +1,35 @@
+/* eslint-disable react/prop-types */
 import foxImg from "../../assets/MetaMask_Fox.png";
 import foxImg2 from "../../assets/metamask.gif";
 import { Metamask } from "../../api/Metamask";
-import { useGlobalContext } from "../../context/GlobalVariables";
 import { useEffect } from "react";
+import { useAtom, useAtomValue } from "jotai";
+import {
+  isLoginAtom,
+  userAddressAtom,
+  ethBalanceAtom,
+} from "../../context/AtomGlobalVariables";
 import "./login.scss";
 
 export default function Login(props) {
-  const { isLogin } = useGlobalContext();
+  const isLogin = useAtomValue(isLoginAtom);
+  const [userAddress, setUserAddress] = useAtom(userAddressAtom);
+  const [ethBalance, setEthBalance] = useAtom(ethBalanceAtom);
 
   const closeModal = () => {
     props.setOpenModal(!props.openModal);
+  };
+
+  useEffect(() => {
+    console.log(
+      `Your Account is: ${userAddress} and Eth Balance: ${ethBalance} login: ${isLogin}`
+    );
+  }, [userAddress]);
+
+  const RequestAccount = async () => {
+    const { account, ethBalance } = await Metamask();
+    setUserAddress(account); // Store the account value in state
+    setEthBalance(ethBalance); // Store the ethBalance value in state
   };
 
   return (
@@ -19,41 +39,42 @@ export default function Login(props) {
           X
         </button>
         <div className="m-content">
-          {!isLogin ? <LoginPropt /> : <LoginSuccess closeModal={closeModal} />}
+          {!isLogin ? (
+            <LoginPropt onRequestAccount={RequestAccount} />
+          ) : (
+            <LoginSuccess
+              userAddress={userAddress}
+              ethBalance={ethBalance}
+              closeModal={closeModal}
+            />
+          )}
         </div>
       </div>
     </div>
   );
 }
 
-function LoginPropt() {
-  const { setUserAddress, setEthBalance } = useGlobalContext();
-
-  const RequestAccount = async () => {
-    const { account, ethBalance } = await Metamask();
-    console.log(`Your Accountis : ${account} and Eth Balance: ${ethBalance}`);
-  };
-
+function LoginPropt({ onRequestAccount }) {
   return (
     <>
       <h1>Login</h1>
       <img src={foxImg} alt="Meta_Mask_Logo"></img>
       <p>Using MetaMask</p>
-      <button className="btn-login" onClick={RequestAccount}>
+      <button className="btn-login" onClick={onRequestAccount}>
         Login
       </button>
     </>
   );
 }
 
-function LoginSuccess(props) {
+function LoginSuccess({ userAddress, ethBalance, closeModal }) {
   return (
     <>
       <img className="img-fox2" src={foxImg2} alt="Meta_Mask_Logo"></img>
       <h2>Welcome</h2>
-      <p>Address:</p>
-      <p>Eth:</p>
-      <button className="btn-login" onClick={props.closeModal}>
+      <p>Address: {userAddress}</p>
+      <p>Eth: {ethBalance}</p>
+      <button className="btn-login" onClick={closeModal}>
         Close
       </button>
     </>

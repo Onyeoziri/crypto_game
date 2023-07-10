@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useGlobalContext } from "./context/GlobalVariables";
+import { useAtomValue } from "jotai";
+import { isLoginAtom } from "./context/AtomGlobalVariables";
 import { Home, NFT, ErrorPage } from "./pages";
 import { TicTacToe } from "./pages";
 
@@ -9,12 +10,20 @@ import "./App.css";
 import "./styles/components.scss";
 
 import Test from "./pages/test/test";
+import { useEffect } from "react";
 
 function App() {
+  const isLogin = useAtomValue(isLoginAtom);
+
+  useEffect(() => {
+    //!!I need to solcve react 18 rerender problem to fix game
+    console.log("Re-render problem");
+  }, []);
   return (
     <Router>
       <NavBar />
-      <AdressBar />
+      {isLogin && <AdressPanel />}
+
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/NFTs" element={<NFT />} />
@@ -27,11 +36,6 @@ function App() {
       </Routes>
     </Router>
   );
-}
-
-function AdressBar() {
-  const { isLogin } = useGlobalContext();
-  return <>{isLogin && <AdressPanel />}</>;
 }
 
 export default App;

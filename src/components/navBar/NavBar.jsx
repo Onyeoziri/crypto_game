@@ -1,8 +1,13 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Login from "../login/Login";
 import "./navBar.scss";
-import { useGlobalContext } from "../../context/GlobalVariables";
+import { useAtom, useAtomValue } from "jotai";
+import {
+  isLoginAtom,
+  userAddressAtom,
+} from "../../context/AtomGlobalVariables";
 
 export default function NavBar() {
   const [openModal, setOpenModal] = useState(false);
@@ -26,10 +31,11 @@ export default function NavBar() {
 }
 
 //sign in & sign out button appears based on conditions
-function SignInOut(props) {
-  const { isLogin, setUserAddress } = useGlobalContext();
+function SignInOut({ openModal, setOpenModal }) {
+  const isLogin = useAtomValue(isLoginAtom);
+  const [_, setUserAddress] = useAtom(userAddressAtom);
 
-  if (isLogin && props.openModal === false) {
+  if (isLogin && openModal === false) {
     return (
       <button className="btn-nav-login" onClick={() => setUserAddress(null)}>
         Sign Out
@@ -40,7 +46,7 @@ function SignInOut(props) {
       <button
         className="btn-nav-login"
         onClick={() => {
-          props.setOpenModal(true);
+          setOpenModal(true);
         }}
       >
         Login

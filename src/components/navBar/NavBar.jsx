@@ -17,7 +17,7 @@ export default function NavBar() {
       <nav className="navbar">
         <Link to="/">APP-NAME</Link>
 
-        <div>
+        <div className="nav-select">
           <NavLink to="/">Games</NavLink>
           <NavLink to="/NFTs">NFTs</NavLink>
 

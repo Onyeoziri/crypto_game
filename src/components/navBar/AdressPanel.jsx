@@ -1,9 +1,9 @@
-import { useAtom } from "jotai";
+import { useAtomValue } from "jotai";
 import { userAddressAtom } from "../../context/AtomGlobalVariables";
 import "./navBar.scss";
 
 export default function AdressPanel() {
-  const { userAddress } = useAtom(userAddressAtom);
+  const userAddress = useAtomValue(userAddressAtom);
 
   return (
     <div className="a-panel">

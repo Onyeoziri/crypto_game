@@ -14,9 +14,11 @@ nav {
     &:not(:first-child) {
       margin: 0 1.2rem;
     }
+  }
 
+  .nav-select a {
     &.active,
-    &:not(:first-child):hover {
+    &:hover {
       color: rgb(249, 104, 82);
     }
   }

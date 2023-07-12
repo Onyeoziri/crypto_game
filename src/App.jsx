@@ -1,24 +1,30 @@
+import { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useAtomValue } from "jotai";
-import { isLoginAtom } from "./context/AtomGlobalVariables";
+
 import { Home, NFT, ErrorPage } from "./pages";
 import { TicTacToe } from "./pages";
+import Test from "./pages/test/test";
+
+import { useAtom, useAtomValue } from "jotai";
+import {
+  isLoginAtom,
+  userAddressAtom,
+  ethBalanceAtom,
+} from "./context/AtomGlobalVariables";
 
 import NavBar from "./components/navBar/NavBar";
 import AdressPanel from "./components/navBar/AdressPanel";
 import "./App.css";
 import "./styles/components.scss";
 
-import Test from "./pages/test/test";
-import { useEffect } from "react";
-
 function App() {
   const isLogin = useAtomValue(isLoginAtom);
 
   useEffect(() => {
-    //!!I need to solcve react 18 rerender problem to fix game
+    //!!I need to solve react 18 rerender problem to fix game
     console.log("Re-render problem");
   }, []);
+
   return (
     <Router>
       <NavBar />

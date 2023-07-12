@@ -6,18 +6,15 @@
   grid-template-rows: 0.55fr 1.45fr;
   grid-template-areas:
     "Tittle Tittle"
-    "game info";
+    "game_area game_info";
 
   & h1 {
     grid-area: Tittle;
   }
+}
 
-  & .game-area {
-    grid-area: game;
-
-    & button {
-    }
-  }
+.game-area {
+  grid-area: game_area;
 }
 
 .game-board {
@@ -44,18 +41,18 @@
 
   &:hover {
     cursor: pointer;
-    box-shadow: 0 0 0.3rem #888;
+    box-shadow: 0 0 0.7rem #888;
   }
 }
 
-.x {
+.X {
   color: rgb(255, 70, 37);
 }
 
-.o {
+.O {
   color: rgb(44, 135, 255);
 }
 
-.game-board {
-  grid-area: info;
+.game-info {
+  grid-area: game_info;
 }

@@ -20,12 +20,6 @@ export default function Login(props) {
     props.setOpenModal(!props.openModal);
   };
 
-  useEffect(() => {
-    console.log(
-      `Your Account is: ${userAddress} and Eth Balance: ${ethBalance} login: ${isLogin}`
-    );
-  }, [userAddress]);
-
   const RequestAccount = async () => {
     const { account, ethBalance } = await Metamask();
     setUserAddress(account); // Store the account value in state

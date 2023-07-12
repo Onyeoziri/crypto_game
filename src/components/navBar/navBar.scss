@@ -2,11 +2,13 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 5%;
+  padding: 0 4.5%;
   height: 3.3rem;
   border-radius: 2rem;
-  background-color: rgb(46, 46, 49);
+  background-color: rgb(29, 29, 31);
   margin-bottom: 2rem;
+  border: rgba(70, 70, 70, 0.302) solid thin;
+  box-shadow: 0 0.08rem 0.2rem #000000;
 
   a {
     color: white;
@@ -16,11 +18,23 @@ nav {
     }
   }
 
-  .nav-select a {
+  div > a {
     &.active,
     &:hover {
       color: rgb(249, 104, 82);
     }
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -1rem;
+    left: -1rem;
+    right: -1rem;
+    bottom: -1rem;
+    border-radius: 2rem;
+    background-color: rgb(46, 46, 49);
+    z-index: -1;
   }
 }
 

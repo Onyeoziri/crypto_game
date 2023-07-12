@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import tac from "../../assets/thumbnails/tictactoe.png";
-import test2 from "../../assets/thumbnails/test2.webp";
+import test from "../../assets/thumbnails/test.webp";
 import "./home.scss";
 
 export default function home() {
@@ -20,10 +20,10 @@ export default function home() {
 
         <Link to="/test">
           <div className="card">
-            <img src={test2} alt="CardImage" />
+            <img src={test} alt="CardImage" />
             <div className="card-content">
-              <h3>Just a Test</h3>
-              <p>JTest Thumbnail</p>
+              <h3>TEST</h3>
+              <p>Just a test Thumbnail</p>
             </div>
           </div>
         </Link>

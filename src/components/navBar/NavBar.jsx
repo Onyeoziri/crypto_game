@@ -4,10 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import Login from "../login/Login";
 import "./navBar.scss";
 import { useAtom, useAtomValue } from "jotai";
-import {
-  isLoginAtom,
-  userAddressAtom,
-} from "../../context/AtomGlobalVariables";
+import { isLoginAtom, userAddressAtom } from "../../context/AtomGlobalVariables";
 
 export default function NavBar() {
   const [openModal, setOpenModal] = useState(false);
@@ -17,7 +14,7 @@ export default function NavBar() {
       <nav className="navbar">
         <Link to="/">APP-NAME</Link>
 
-        <div className="nav-select">
+        <div>
           <NavLink to="/">Games</NavLink>
           <NavLink to="/NFTs">NFTs</NavLink>
 

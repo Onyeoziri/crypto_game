@@ -3,7 +3,7 @@
 .ticTacToe {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 0.55fr 1.45fr;
+  grid-template-rows: 0.52fr 1.48fr;
   grid-template-areas:
     "Tittle Tittle"
     "game_area game_info";
@@ -24,10 +24,12 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
+  border-radius: 1rem;
+  background-color: rgb(33, 39, 44);
 }
 
 .cell {
-  border: thin solid black;
+  border: thin solid rgb(255, 255, 255);
   width: 100%;
   height: 100%;
   box-sizing: border-box;
@@ -41,12 +43,28 @@
 
   &:hover {
     cursor: pointer;
-    box-shadow: 0 0 0.7rem #888;
+    box-shadow: 0 0 1rem #dffcce;
   }
 }
 
+.cell:nth-child(1) {
+  border-top-left-radius: 1rem;
+}
+
+.cell:nth-child(3) {
+  border-top-right-radius: 1rem;
+}
+
+.cell:nth-child(7) {
+  border-bottom-left-radius: 1rem;
+}
+
+.cell:nth-child(9) {
+  border-bottom-right-radius: 1rem;
+}
+
 .X {
-  color: rgb(255, 70, 37);
+  color: rgb(255, 90, 31);
 }
 
 .O {

@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef } from "react";
+import { useAtomValue } from "jotai";
+import { isLoginAtom } from "../../../context/AtomGlobalVariables";
+import NFTMint_Tic from "./NFTmint_Tic";
 import "./ticTacToe.scss";
 
 export default function TicTacToe() {
-  const [board, setBoard] = useState(Array(9).fill(null));
+  const [board, setBoard] = useState(Array(9).fill(""));
   const [currentPlayer, setCurrentPlayer] = useState("X");
   const [winner, setWinner] = useState(null);
 
@@ -12,6 +15,8 @@ export default function TicTacToe() {
   const [draws, setDraws] = useState(0);
   const [losses, setLosses] = useState(0);
   const [gameOver, setGameOver] = useState(false);
+
+  const isLogin = useAtomValue(isLoginAtom);
 
   useEffect(() => {
     if (currentPlayer === "O" && !gameOver) {
@@ -64,6 +69,13 @@ export default function TicTacToe() {
         setGameOver(true);
         return;
       }
+
+      //Check for a Draw
+      if (updatedBoard.every((cell) => cell !== "")) {
+        setDraws(draws + 1);
+        setWinner("No One!");
+        setGameOver(true);
+      }
     }
     // Switch the current player
     setCurrentPlayer(currentPlayer === "X" ? "O" : "X");
@@ -81,25 +93,11 @@ export default function TicTacToe() {
         if (currentBoard[x] && currentBoard[y] && currentBoard[z] === "X") {
           setWins(wins + 1);
           return true;
-        } else if (
-          currentBoard[x] &&
-          currentBoard[y] &&
-          currentBoard[z] === "O"
-        ) {
+        } else if (currentBoard[x] && currentBoard[y] && currentBoard[z] === "O") {
           setLosses(losses + 1);
           return true;
         }
       }
-    }
-
-    // Check for a draw
-    if (
-      currentBoard.every((cell) => {
-        cell !== "" && !gameOver;
-      })
-    ) {
-      setDraws(draws + 1);
-      return true;
     }
 
     return false;
@@ -109,6 +107,7 @@ export default function TicTacToe() {
     setBoard(Array(9).fill(""));
     setGameOver(false);
     setWinner(null);
+    isFirstRender.current = true;
   }
 
   return (
@@ -117,11 +116,7 @@ export default function TicTacToe() {
       <div className="game-area">
         <div className="game-board">
           {board.map((cell, index) => (
-            <div
-              className={`cell ${cell}`}
-              key={index}
-              onClick={() => handleMove(index)}
-            >
+            <div className={`cell ${cell}`} key={index} onClick={() => handleMove(index)}>
               {cell}
             </div>
           ))}
@@ -139,7 +134,7 @@ export default function TicTacToe() {
       <div className="game-info">
         <ul>
           <li>
-            <h3>Attempts: {attempts}</h3>
+            <h3>Attempst: {attempts}</h3>
           </li>
           <li>
             <h3>Wins: {wins}</h3>
@@ -152,6 +147,15 @@ export default function TicTacToe() {
           </li>
         </ul>
       </div>
+      {isLogin && (
+        <NFTMint_Tic
+          attempts={attempts}
+          wins={wins}
+          losses={losses}
+          draws={draws}
+          gameOver={gameOver}
+        />
+      )}
     </div>
   );
 }

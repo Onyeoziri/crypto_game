@@ -3,27 +3,18 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import { Home, NFT, ErrorPage } from "./pages";
 import { TicTacToe } from "./pages";
-import Test from "./pages/test/test";
+import Test from "./pages/games/test/Test";
 
 import { useAtom, useAtomValue } from "jotai";
-import {
-  isLoginAtom,
-  userAddressAtom,
-  ethBalanceAtom,
-} from "./context/AtomGlobalVariables";
+import { isLoginAtom, userAddressAtom, ethBalanceAtom } from "./context/AtomGlobalVariables";
 
 import NavBar from "./components/navBar/NavBar";
 import AdressPanel from "./components/navBar/AdressPanel";
-import "./App.css";
 import "./styles/components.scss";
+import "./App.css";
 
 function App() {
   const isLogin = useAtomValue(isLoginAtom);
-
-  useEffect(() => {
-    //!!I need to solve react 18 rerender problem to fix game
-    console.log("Re-render problem");
-  }, []);
 
   return (
     <Router>

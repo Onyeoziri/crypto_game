@@ -132,9 +132,10 @@ export default function TicTacToe() {
       </div>
 
       <div className="game-info">
+        <h1>STATS</h1>
         <ul>
           <li>
-            <h3>Attempst: {attempts}</h3>
+            <h3>Attempts: {attempts}</h3>
           </li>
           <li>
             <h3>Wins: {wins}</h3>

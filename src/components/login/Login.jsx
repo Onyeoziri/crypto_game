@@ -22,8 +22,8 @@ export default function Login(props) {
 
   const RequestAccount = async () => {
     const { account, ethBalance } = await Metamask();
-    setUserAddress(account); // Store the account value in state
-    setEthBalance(ethBalance); // Store the ethBalance value in state
+    setUserAddress(account);
+    setEthBalance(ethBalance);
   };
 
   return (

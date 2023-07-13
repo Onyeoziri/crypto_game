@@ -34,7 +34,13 @@ function SignInOut({ openModal, setOpenModal }) {
 
   if (isLogin && openModal === false) {
     return (
-      <button className="btn-nav-login" onClick={() => setUserAddress(null)}>
+      <button
+        className="btn-nav-login"
+        onClick={() => {
+          setUserAddress(null);
+          localStorage.clear();
+        }}
+      >
         Sign Out
       </button>
     );

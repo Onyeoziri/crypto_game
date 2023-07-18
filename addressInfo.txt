@@ -1,0 +1,7 @@
+contract address: 0x139826d04e83c2c68130ccc69a4df9c3e0988b5e
+https://sepolia.etherscan.io/tx/0x599c545a6120cb5557bb59ff71ea053c1657257187a6fab5d355e9e2ba50293b
+
+mint address: 0x139826d04e83C2C68130CCC69A4dF9C3e0988B5E
+https://sepolia.etherscan.io/tx/0xce0f454d60131082574ce8bcb2e837ed6618d2b4ffb2681bb1cebf6ebec922a7
+
+if you put the mint address into opensea's testnet search bar you'll find the nft collection containing the nft

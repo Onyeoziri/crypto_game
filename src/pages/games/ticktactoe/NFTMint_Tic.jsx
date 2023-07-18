@@ -5,7 +5,7 @@ export default function NFTMint_Tic({ attempts, wins, draws, losses, gameOver })
       <div>
         <h1>Congratulations!</h1>
         <p>Best 2/3</p>
-        <button>Mint</button>
+        <button onClick={() => {}}>Mint</button>
       </div>
     );
   }
